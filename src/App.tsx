@@ -43,16 +43,10 @@ function SendMessage({ magic }: { magic: Magic }) {
 
       const jsonTx = [
         {
-          typeUrl: "/cosmos.bank.v1beta1.MsgSend",
+          typeUrl: "/cosmos.offchain.v1alpha1.MsgSignData",
           value: {
-            fromAddress: metadata.publicAddress,
-            toAddress: "",
-            amount: [
-              {
-                amount: String(0),
-                denom: "atom",
-              },
-            ],
+            signer: metadata.publicAddress,
+            data,
           },
         },
       ];
